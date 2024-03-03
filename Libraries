@@ -1,0 +1,19 @@
+#include <SevSeg.h>
+
+SevSeg sevseg;
+
+void setup() {
+  byte numDigits = 2;
+  byte digitPins[] = {4, 5};
+  byte segmentPins[] = {6, 7, 8, 9, 10, 11, 12, 13}; // Adjust pins according to your setup
+  sevseg.begin(COMMON_CATHODE, numDigits, digitPins, segmentPins);
+}
+
+void loop() {
+  // Your code for counting and button handling
+
+  int tens = count / 10;
+  int units = count % 10;
+  sevseg.setNumber(tens * 10 + units, 2);
+  sevseg.refreshDisplay();
+}
